@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="etStyle">
+        <item name="android:textColor">@color/design_default_color_primary</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/etHeight</item>
+        <item name="android:layout_margin">@dimen/margin</item>
+    </style>
+
+    <style name="rgStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/rgHeight</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="rbStyle">
+        <item name="android:textColor">@color/design_default_color_primary</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/etHeight</item>
+        <item name="android:layout_margin">@dimen/margin</item>
+        <item name="android:padding">@dimen/padding</item>
+    </style>
+    <style name="txtStyle">
+        <item name="android:textColor">@color/design_default_color_primary</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin</item>
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:textSize">@dimen/text_Size</item>
+    </style>
+    <style name="checkStyle">
+        <item name="android:textColor">@color/design_default_color_primary</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:padding">@dimen/padding</item>
+    </style>
+    <style name="txtTitle">
+        <item name="android:textColor">@color/design_default_color_primary</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/please_enter_book_details</item>
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="txtView">
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">@dimen/text_Size</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <string name="please_enter_book_details">Please Enter Book Details</string>
+</resources>

@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">assignment 4</string>
+    <string name="book">book</string>
+    <string name="title">My Library</string>
+    <string name="book_list">Book List</string>
+    <string name="addBook">Add Book</string>
+    <string name="search">Search</string>
+    <string name="sort">sort</string>
+    <string name="by_bookName">By BookName</string>
+    <string name="by_launchDate">By Launching Date</string>
+    <string name="filter">filter</string>
+    <string name="by_genre">By Genre</string>
+    <string name="by_type">By Type</string>
+    <string name="fiction">fiction</string>
+    <string name="non_fiction">non fiction</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="_18_to_60">18 to 60</string>
+    <string name="_60">60+</string>
+    <string name="below_18">Bellow 18</string>
+    <string name="select_age_group_suitable_for_book_read">select Age group</string>
+    <string name="set_launching_date_of_book">Set launching Date</string>
+    <string name="nonfiction">non fiction</string>
+    <string name="enter_book_name">enter book name</string>
+    <string name="enter_author_name">enter author name</string>
+    <string name="authorName">authorName</string>
+
+    <string name="edit">edit</string>
+    <string name="ageGroup">age group</string>
+    <string name="type">bookType</string>
+    <string name="genre">genre</string>
+    <string name="autherName">Author Name</string>
+    <string name="home_screen_image">homeImage</string>
+    <string name="book_name">Book Name</string>
+    <string name="author_name_title">Author Name</string>
+    <string name="book_name_title">Book Name</string>
+
+    <string-array name="genreArray">
+        <item>Science Fiction</item>
+        <item>Historical Fiction</item>
+        <item>Children’s</item>
+        <item>Mystery</item>
+        <item>Adventure</item>
+        <item>Cooking</item>
+        <item>Health </item>
+        <item>Art</item>
+        <item>Motivational</item>
+        <item>Humor</item>
+    </string-array>
+</resources>

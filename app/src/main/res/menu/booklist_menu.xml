@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/actionSearch"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="@string/search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/Sort"
+        android:icon="@drawable/ic_baseline_sort_24"
+        android:title="@string/sort"
+        app:showAsAction="ifRoom">
+
+        <menu>
+            <item
+                android:id="@+id/bookNameSort"
+                android:title="@string/by_bookName" />
+            <item
+                android:id="@+id/launchDate"
+                android:title="@string/by_launchDate" />
+        </menu>
+
+    </item>
+    <item
+        android:id="@+id/miFilter"
+        android:icon="@drawable/ic_baseline_filter_list_24"
+        android:title="@string/filter"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/genreFilter"
+                android:title="@string/by_genre" />
+
+
+            <item
+                android:id="@+id/typeFilter"
+                android:title="@string/by_type">
+                <menu>
+                    <item
+                        android:id="@+id/rFic"
+                        android:title="@string/fiction" />
+                    <item
+                        android:id="@+id/rNonFic"
+                        android:title="@string/non_fiction" />
+                </menu>
+            </item>
+
+        </menu>
+    </item>
+</menu>

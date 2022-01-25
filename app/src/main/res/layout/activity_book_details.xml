@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/view_margin_padding"
+    android:padding="@dimen/view_margin_padding"
+    tools:context=".BookDetailsActivity">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:weightSum="2">
+
+        <TextView
+            style="@style/txtView"
+            android:text="@string/book_name"
+            android:textColor="@color/design_default_color_primary" />
+
+        <TextView
+            android:id="@+id/vBookName"
+            style="@style/txtView"
+            android:textColor="@color/black" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:weightSum="2">
+
+        <TextView
+            style="@style/txtView"
+            android:text="@string/autherName"
+            android:textColor="@color/design_default_color_primary" />
+
+        <TextView
+            android:id="@+id/vAuthorName"
+            style="@style/txtView"
+            android:textColor="@color/black" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:weightSum="2">
+
+        <TextView
+            style="@style/txtView"
+            android:text="@string/genre"
+            android:textColor="@color/design_default_color_primary" />
+
+        <TextView
+            android:id="@+id/vGenre"
+            style="@style/txtView"
+            android:textColor="@color/black" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:weightSum="2">
+
+        <TextView
+            style="@style/txtView"
+            android:text="@string/type"
+            android:textColor="@color/design_default_color_primary" />
+
+        <TextView
+            android:id="@+id/vType"
+            style="@style/txtView"
+            android:textColor="@color/black" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:weightSum="2">
+
+        <TextView
+            style="@style/txtView"
+            android:text="@string/set_launching_date_of_book"
+            android:textColor="@color/design_default_color_primary" />
+
+        <TextView
+            android:id="@+id/vDate"
+            style="@style/txtView"
+            android:textColor="@color/black" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:weightSum="2">
+
+        <TextView
+            style="@style/txtView"
+            android:text="@string/ageGroup"
+            android:textColor="@color/design_default_color_primary" />
+
+        <TextView
+            android:id="@+id/vAge"
+            style="@style/txtView"
+            android:textColor="@color/black" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/vAge3"
+            style="@style/txtView"
+            android:textColor="@color/black" />
+
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/vAge2"
+            style="@style/txtView"
+            android:textColor="@color/black" />
+
+    </TableRow>
+
+</TableLayout>
