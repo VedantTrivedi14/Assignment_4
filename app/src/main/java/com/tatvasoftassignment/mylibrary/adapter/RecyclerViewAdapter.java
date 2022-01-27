@@ -1,4 +1,4 @@
-package com.tatvasoftassignment.mylibrary;
+package com.tatvasoftassignment.mylibrary.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,6 +12,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.tatvasoftassignment.mylibrary.R;
+import com.tatvasoftassignment.mylibrary.model.Books;
+import com.tatvasoftassignment.mylibrary.view.BookDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;

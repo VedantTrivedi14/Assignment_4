@@ -1,4 +1,4 @@
-package com.tatvasoftassignment.mylibrary;
+package com.tatvasoftassignment.mylibrary.model;
 
 
 import static android.content.ContentValues.TAG;

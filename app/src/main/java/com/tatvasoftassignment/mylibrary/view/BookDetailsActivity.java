@@ -1,4 +1,4 @@
-package com.tatvasoftassignment.mylibrary;
+package com.tatvasoftassignment.mylibrary.view;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.tatvasoftassignment.mylibrary.database.DataHelper;
+import com.tatvasoftassignment.mylibrary.R;
+import com.tatvasoftassignment.mylibrary.model.Books;
 
 public class BookDetailsActivity extends AppCompatActivity {
     int id;

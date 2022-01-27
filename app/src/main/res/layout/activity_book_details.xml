@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginHorizontal="@dimen/view_margin_padding"
     android:padding="@dimen/view_margin_padding"
-    tools:context=".BookDetailsActivity">
+    tools:context=".view.BookDetailsActivity">
 
     <TableRow
         android:layout_width="match_parent"

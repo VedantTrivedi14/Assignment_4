@@ -1,4 +1,4 @@
-package com.tatvasoftassignment.mylibrary;
+package com.tatvasoftassignment.mylibrary.database;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/vedant trivedi/AndroidStudioProjects/Tatvasoft_Android/Assignments/myLibrary/app/src/main/res/menu/edit_menu.xml" value="0.228125" />
         <entry key="..\:/Users/vedant trivedi/AndroidStudioProjects/Tatvasoft_Android/myLibrary/app/src/main/res/drawable/ic_baseline_book_24.xml" value="0.12604166666666666" />
         <entry key="..\:/Users/vedant trivedi/AndroidStudioProjects/Tatvasoft_Android/myLibrary/app/src/main/res/layout/activity_add_book.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/vedant trivedi/AndroidStudioProjects/Tatvasoft_Android/myLibrary/app/src/main/res/layout/activity_add_book2.xml" value="0.17481884057971014" />
@@ -15,6 +16,7 @@
         <entry key="..\:/Users/vedant trivedi/AndroidStudioProjects/Tatvasoft_Android/myLibrary/app/src/main/res/layout/nav_header.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/vedant trivedi/AndroidStudioProjects/Tatvasoft_Android/myLibrary/app/src/main/res/menu/booklist_menu.xml" value="0.176" />
         <entry key="..\:/Users/vedant trivedi/AndroidStudioProjects/Tatvasoft_Android/myLibrary/app/src/main/res/menu/edit_menu.xml" value="0.228125" />
+        <entry key="..\:/Users/vedant trivedi/AndroidStudioProjects/Tatvasoft_Android/myLibrary/app/src/main/res/menu/title_menu.xml" value="0.228125" />
       </map>
     </option>
   </component>

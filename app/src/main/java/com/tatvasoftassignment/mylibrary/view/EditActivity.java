@@ -1,7 +1,9 @@
-package com.tatvasoftassignment.mylibrary;
+package com.tatvasoftassignment.mylibrary.view;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,33 +18,58 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.tatvasoftassignment.mylibrary.database.DataHelper;
+import com.tatvasoftassignment.mylibrary.R;
+import com.tatvasoftassignment.mylibrary.model.Books;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Objects;
 
-public class AddBookActivity extends AppCompatActivity {
+public class EditActivity extends AppCompatActivity {
 
     private Button btnAddBook;
     private TextView txtDate;
     private Spinner mSpinner;
     private EditText etBookName, etAuthorName;
-
-    private RadioButton rFiction;
+    private RadioButton rFiction, rNonFiction;
     private CheckBox cChild, cAdult, cSixtyPlus;
     String bookGenre, type, age = "";
+    Books bookData;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
 
-        memoryAllocation();
+        init_id();
         setLaunchingDate();
         setSpinner();
-        DataHelper db = new DataHelper(AddBookActivity.this);
-        btnAddBook.setOnClickListener(view -> {
+
+        etBookName.setKeyListener(null);
+        etAuthorName.setKeyListener(null);
+
+        DataHelper db = new DataHelper(EditActivity.this);
+        Intent i = getIntent();
+        int id = i.getExtras().getInt("id");
+        Cursor cursor = db.getDataBookName(id);
+        if (cursor.getCount() == 0) {
+            Toast.makeText(EditActivity.this, "No Details of this Books ", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        while (cursor.moveToNext()) {
+
+            bookData = new Books(id, cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6));
+        }
+
+        displayExistingData();
+
+
+        btnAddBook.setText("Edit");
+        btnAddBook.setOnClickListener(v -> {
 
             if (isValid()) {
-
                 if (rFiction.isChecked()) {
                     type = "Fiction";
                 } else {
@@ -63,15 +90,15 @@ public class AddBookActivity extends AppCompatActivity {
                 } else {
                     age += "";
                 }
-
-                db.insertData(etBookName.getText().toString(), etAuthorName.getText().toString(), bookGenre, type, txtDate.getText().toString(), age);
-                Toast.makeText(getApplicationContext(), "Book added successfully", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                Boolean updateData = db.updateData(id, Objects.requireNonNull(etBookName.getText()).toString(), Objects.requireNonNull(etAuthorName.getText()).toString(), bookGenre, type, Objects.requireNonNull(txtDate.getText()).toString(), age);
+                if (updateData) {
+                    Toast.makeText(EditActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(EditActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
             }
-
-
         });
+
     }
 
     private Boolean isValid() {
@@ -96,13 +123,14 @@ public class AddBookActivity extends AppCompatActivity {
         return valid;
     }
 
-    private void memoryAllocation() {
+    private void init_id() {
         txtDate = findViewById(R.id.txtDate);
         mSpinner = findViewById(R.id.mSpinner);
         btnAddBook = findViewById(R.id.btnAddBook);
         etBookName = findViewById(R.id.etBookName);
         etAuthorName = findViewById(R.id.etAuthorName);
         rFiction = findViewById(R.id.rFiction);
+        rNonFiction = findViewById(R.id.rNonFiction);
         cChild = findViewById(R.id.cChild);
         cAdult = findViewById(R.id.cAdult);
         cSixtyPlus = findViewById(R.id.cSixtyPulse);
@@ -145,5 +173,60 @@ public class AddBookActivity extends AppCompatActivity {
 
     }
 
+    private void displayExistingData() {
+
+        etBookName.setText(bookData.getBookNames());
+        etAuthorName.setText(bookData.getBookAuthorNames());
+        txtDate.setText(bookData.getBookLaunchDate());
+
+        switch (bookData.getBookGenre()) {
+            case "Science Fiction":
+                mSpinner.setSelection(0);
+                break;
+            case "Historical Fiction":
+                mSpinner.setSelection(1);
+                break;
+            case "Children’s":
+                mSpinner.setSelection(2);
+                break;
+            case "Mystery":
+                mSpinner.setSelection(3);
+                break;
+            case "Adventure":
+                mSpinner.setSelection(4);
+                break;
+            case "Cooking":
+                mSpinner.setSelection(5);
+                break;
+            case "Health":
+                mSpinner.setSelection(6);
+                break;
+            case "Art":
+                mSpinner.setSelection(7);
+                break;
+            case "Motivational":
+                mSpinner.setSelection(8);
+                break;
+            case "Humor":
+                mSpinner.setSelection(9);
+                break;
+        }
+
+        if (bookData.getBookAgePrefer().contains("child")) {
+            cChild.setChecked(true);
+        }
+        if (bookData.getBookAgePrefer().contains("Adult")) {
+            cAdult.setChecked(true);
+        }
+        if (bookData.getBookAgePrefer().contains("senior citizen")) {
+            cSixtyPlus.setChecked(true);
+        }
+        if (bookData.getBookType().equals("Fiction")) {
+            rFiction.setChecked(true);
+        } else {
+            rNonFiction.setChecked(true);
+        }
+
+    }
 
 }
