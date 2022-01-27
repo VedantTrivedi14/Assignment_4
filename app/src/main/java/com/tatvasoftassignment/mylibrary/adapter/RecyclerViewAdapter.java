@@ -46,10 +46,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     if (item.getBookAuthorNames().equals(constraint.toString().toLowerCase()) && !item.getBookNames().equals(item.getBookAuthorNames())) {
                         filterArrayList.add(item);
                     }
-                    if (item.getBookGenre().toLowerCase().equals(constraint.toString().toLowerCase())) {
+                    if (item.getBookGenre().equalsIgnoreCase(constraint.toString())) {
                         filterArrayList.add(item);
                     }
-                    if (item.getBookType().toLowerCase().equals(constraint.toString().toLowerCase())) {
+                    if (item.getBookType().equalsIgnoreCase(constraint.toString())) {
                         filterArrayList.add(item);
                     }
                 }
@@ -61,6 +61,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
 
+        @SuppressLint("NotifyDataSetChanged")
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             bookList.clear();
@@ -81,8 +82,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
 
         Books book_temp = bookList.get(position);
-        holder.t1.setText(book_temp.getBookNames());
-        holder.t2.setText(book_temp.getBookAuthorNames());
+        holder.txtBookName.setText(book_temp.getBookNames());
+        holder.txtAutherName.setText(book_temp.getBookAuthorNames());
         holder.itemView.setOnClickListener(v -> {
             Intent i = new Intent(ctx, BookDetailsActivity.class);
 
@@ -103,12 +104,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     public void sortDataByBookName() {
         Collections.sort(bookList, (o1, o2) -> o1.getBookNames().compareToIgnoreCase(o2.getBookNames()));
         notifyDataSetChanged();
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     public void sortDataByBookLaunchDate() {
         Collections.sort(bookList, (o1, o2) -> o1.getBookLaunchDate().compareTo(o2.getBookLaunchDate()));
         notifyDataSetChanged();
@@ -116,12 +119,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder {
-        TextView t1, t2;
+        TextView txtBookName, txtAutherName;
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
-            t1 = itemView.findViewById(R.id.txtBookName);
-            t2 = itemView.findViewById(R.id.txtAutherName);
+            txtBookName = itemView.findViewById(R.id.txtBookName);
+            txtAutherName = itemView.findViewById(R.id.txtAutherName);
 
         }
 

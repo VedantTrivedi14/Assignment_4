@@ -1,5 +1,6 @@
 package com.tatvasoftassignment.mylibrary.view;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String bookGenre;
     private RecyclerView recBookList;
     private DataHelper db;
+    private TextView txtMassage;
     private RecyclerViewAdapter adapter;
     private final ArrayList<Books> book = new ArrayList<>();
 
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recBookList = findViewById(R.id.recBookList);
-
+        txtMassage = findViewById(R.id.txtMassage);
         db = new DataHelper(MainActivity.this);
         createBookDataList();
         setAdapterRecyclerView();
@@ -61,8 +64,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void createBookDataList() {
         Cursor getData = db.getData();
         if (getData.getCount() == 0) {
-            Toast.makeText(this, "No Books Right Now", Toast.LENGTH_SHORT).show();
+            txtMassage.setVisibility(View.VISIBLE);
 
+        }
+        else{
+            txtMassage.setVisibility(View.INVISIBLE);
         }
         while (getData.moveToNext()) {
             book.add(new Books(getData.getInt(0), getData.getString(1), getData.getString(2), getData.getString(3), getData.getString(4), getData.getString(5), getData.getString(6)));
@@ -106,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+    @SuppressLint({"NonConstantResourceId", "NotifyDataSetChanged"})
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -124,11 +131,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.rFic:
-                adapter.getFilter().filter("Fiction");
+                adapter.getFilter().filter(getString(R.string.fiction));
                 adapter.notifyDataSetChanged();
                 break;
             case R.id.rNonFic:
-                adapter.getFilter().filter("Non-fiction");
+                adapter.getFilter().filter(getString(R.string.non_fiction));
                 adapter.notifyDataSetChanged();
                 break;
             case R.id.genreFilter:
@@ -151,11 +158,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     public void onNothingSelected(AdapterView<?> adapterView) {
                     }
                 });
-                builder.setNeutralButton("Filter", (dialog, which) -> {
+                builder.setNeutralButton(getString(R.string.Filter), (dialog, which) -> {
                     adapter.getFilter().filter(bookGenre);
                     adapter.notifyDataSetChanged();
                 });
-                builder.setNegativeButton("cancel", (dialogInterface, i) -> {
+                builder.setNegativeButton(getString(R.string.cancel), (dialogInterface, i) -> {
 
                 });
                 AlertDialog dialog = builder.create();
@@ -166,12 +173,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.miBookList:
 
-                Toast.makeText(getApplicationContext(), "You are already here", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.You_are_already_here), Toast.LENGTH_LONG).show();
                 navigationView.setCheckedItem(R.id.miAddBook);
                 drawerLayout.closeDrawers();
                 break;

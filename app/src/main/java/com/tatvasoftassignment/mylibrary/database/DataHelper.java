@@ -25,7 +25,7 @@ public class DataHelper extends SQLiteOpenHelper {
 
     }
 
-    public Boolean insertData(String bookName, String bookAuthorName, String genre, String bookType, String launchDate, String agePrefer) {
+    public void insertData(String bookName, String bookAuthorName, String genre, String bookType, String launchDate, String agePrefer) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("bookId", id);
@@ -36,8 +36,8 @@ public class DataHelper extends SQLiteOpenHelper {
         contentValues.put("bookType", bookType);
         contentValues.put("launchDate", launchDate);
         contentValues.put("agePrefer", agePrefer);
-        long result = DB.insert("BookListNew", null, contentValues);
-        return result != -1;
+         DB.insert("BookListNew", null, contentValues);
+
     }
 
     public Cursor getData() {

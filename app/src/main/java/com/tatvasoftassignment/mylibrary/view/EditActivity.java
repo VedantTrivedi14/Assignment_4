@@ -55,7 +55,7 @@ public class EditActivity extends AppCompatActivity {
         int id = i.getExtras().getInt("id");
         Cursor cursor = db.getDataBookName(id);
         if (cursor.getCount() == 0) {
-            Toast.makeText(EditActivity.this, "No Details of this Books ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditActivity.this, getString(R.string.No_Details_of_this_Books), Toast.LENGTH_SHORT).show();
             finish();
         }
         while (cursor.moveToNext()) {
@@ -66,33 +66,33 @@ public class EditActivity extends AppCompatActivity {
         displayExistingData();
 
 
-        btnAddBook.setText("Edit");
+        btnAddBook.setText(getString(R.string.Edit));
         btnAddBook.setOnClickListener(v -> {
 
             if (isValid()) {
                 if (rFiction.isChecked()) {
-                    type = "Fiction";
+                    type = getString(R.string.fiction);
                 } else {
-                    type = "Non-fiction";
+                    type = getString(R.string.non_fiction);
                 }
                 if (cChild.isChecked()) {
-                    age = "child" + "\n";
+                    age = getString(R.string.below_18) + "\n";
                 } else {
                     age += "";
                 }
                 if (cAdult.isChecked()) {
-                    age += "Adult" + "\n";
+                    age += getString(R.string._18_to_60) + "\n";
                 } else {
                     age += "";
                 }
                 if (cSixtyPlus.isChecked()) {
-                    age += "senior citizen" + "\n";
+                    age += getString(R.string._60) + "\n";
                 } else {
                     age += "";
                 }
                 Boolean updateData = db.updateData(id, Objects.requireNonNull(etBookName.getText()).toString(), Objects.requireNonNull(etAuthorName.getText()).toString(), bookGenre, type, Objects.requireNonNull(txtDate.getText()).toString(), age);
                 if (updateData) {
-                    Toast.makeText(EditActivity.this, "Data Updated", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditActivity.this, getString(R.string.Data_Updated), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(EditActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
@@ -105,17 +105,17 @@ public class EditActivity extends AppCompatActivity {
         boolean valid = true;
 
         if (etBookName.getText().toString().length() == 0) {
-            Toast.makeText(this, "Enter Book Name", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.enter_book_name), Toast.LENGTH_LONG).show();
             valid = false;
         } else if (etAuthorName.getText().toString().length() == 0) {
-            Toast.makeText(this, "Enter Author Name", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.enter_author_name), Toast.LENGTH_LONG).show();
             valid = false;
         } else if (txtDate.getText().toString().length() == 0) {
 
-            Toast.makeText(this, "select Date", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.set_launching_date_of_book), Toast.LENGTH_LONG).show();
             valid = false;
         } else if (!cChild.isChecked() && !cAdult.isChecked() && !cSixtyPlus.isChecked()) {
-            Toast.makeText(this, "select age group", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.select_age_group_suitable_for_book_read), Toast.LENGTH_LONG).show();
             valid = false;
         }
 
@@ -212,16 +212,16 @@ public class EditActivity extends AppCompatActivity {
                 break;
         }
 
-        if (bookData.getBookAgePrefer().contains("child")) {
+        if (bookData.getBookAgePrefer().contains(getString(R.string.below_18))) {
             cChild.setChecked(true);
         }
-        if (bookData.getBookAgePrefer().contains("Adult")) {
+        if (bookData.getBookAgePrefer().contains(getString(R.string._18_to_60))) {
             cAdult.setChecked(true);
         }
-        if (bookData.getBookAgePrefer().contains("senior citizen")) {
+        if (bookData.getBookAgePrefer().contains(getString(R.string._60))) {
             cSixtyPlus.setChecked(true);
         }
-        if (bookData.getBookType().equals("Fiction")) {
+        if (bookData.getBookType().equals(getString(R.string.fiction))) {
             rFiction.setChecked(true);
         } else {
             rNonFiction.setChecked(true);

@@ -6,8 +6,7 @@
     android:id="@+id/drawLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity"
-    tools:openDrawer="start">
+    tools:context=".view.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,9 +26,16 @@
             android:id="@+id/recBookList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtTitle" />
+            android:layout_below="@+id/txtTitle"
+            android:layout_margin="@dimen/margin" />
 
-
+        <TextView
+            android:id="@+id/txtMassage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recBookList"
+            android:visibility="invisible"
+            android:text="@string/no_books_right_now" />
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView

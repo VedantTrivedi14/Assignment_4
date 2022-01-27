@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">assignment 4</string>
     <string name="book">book</string>
     <string name="title">My Library</string>
@@ -6,24 +6,26 @@
     <string name="addBook">Add Book</string>
     <string name="search">Search</string>
     <string name="sort">sort</string>
-    <string name="by_bookName">By BookName</string>
-    <string name="by_launchDate">By Launching Date</string>
+    <string name="by_bookName">By bookName</string>
+    <string name="by_launchDate">By launching date</string>
     <string name="filter">filter</string>
     <string name="by_genre">By Genre</string>
     <string name="by_type">By Type</string>
-    <string name="fiction">fiction</string>
-    <string name="non_fiction">non fiction</string>
+    <string name="fiction">Fiction</string>
+    <string name="non_fiction">Non-fiction</string>
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="_18_to_60">18 to 60</string>
     <string name="_60">60+</string>
-    <string name="below_18">Bellow 18</string>
-    <string name="select_age_group_suitable_for_book_read">select Age group</string>
-    <string name="set_launching_date_of_book">Set launching Date</string>
+    <string name="below_18">Below 18</string>
+    <string name="select_age_group_suitable_for_book_read">Select age group</string>
+    <string name="set_launching_date_of_book">Set launching date</string>
     <string name="nonfiction">non fiction</string>
-    <string name="enter_book_name">enter book name</string>
-    <string name="enter_author_name">enter author name</string>
+    <string name="enter_book_name">Enter book name</string>
+    <string name="enter_author_name">Enter author name</string>
     <string name="authorName">authorName</string>
+    <string name="Book_added_successfully">Book added successfully</string>
+    <string name="not_added_successfully">Not added successfully</string>
 
     <string name="edit">edit</string>
     <string name="ageGroup">age group</string>
@@ -34,6 +36,15 @@
     <string name="book_name">Book Name</string>
     <string name="author_name_title">Author Name</string>
     <string name="book_name_title">Book Name</string>
+    <string name="no_books_right_now">No Books Right Now</string>
+    <string name="select_Date">select Date</string>
+    <string name="Filter">Filter</string>
+    <string name="cancel" tools:ignore="ButtonCase">cancel</string>
+    <string name="You_are_already_here">You are already here</string>
+    <string name="No_Details_of_this_Books">No Details of this Books</string>
+    <string name="Edit">Edit</string>
+    <string name="Data_Updated">Data Updated</string>
+
 
     <string-array name="genreArray">
         <item>Science Fiction</item>

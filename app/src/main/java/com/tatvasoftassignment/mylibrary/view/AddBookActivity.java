@@ -44,33 +44,41 @@ public class AddBookActivity extends AppCompatActivity {
         DataHelper db = new DataHelper(AddBookActivity.this);
         btnAddBook.setOnClickListener(view -> {
 
+
+
             if (isValid()) {
 
                 if (rFiction.isChecked()) {
-                    type = "Fiction";
+                    type = getString(R.string.fiction);
                 } else {
-                    type = "Non-fiction";
+                    type = getString(R.string.non_fiction);
                 }
                 if (cChild.isChecked()) {
-                    age = "child" + "\n";
+                    age = getString(R.string.below_18) + "\n";
                 } else {
                     age += "";
                 }
                 if (cAdult.isChecked()) {
-                    age += "Adult" + "\n";
+                    age += R.string._18_to_60 + "\n";
                 } else {
                     age += "";
                 }
                 if (cSixtyPlus.isChecked()) {
-                    age += "senior citizen" + "\n";
+                    age += getString(R.string._60) + "\n";
                 } else {
                     age += "";
                 }
 
-                db.insertData(etBookName.getText().toString(), etAuthorName.getText().toString(), bookGenre, type, txtDate.getText().toString(), age);
-                Toast.makeText(getApplicationContext(), "Book added successfully", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                db.insertData(etBookName.getText().toString(), etAuthorName.getText().toString(), bookGenre, type, txtDate.getText().toString(), age) ;
+                    Toast.makeText(getApplicationContext(), getString(R.string.Book_added_successfully), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+//                else{
+//                    Toast.makeText(getApplicationContext(), getString(R.string.not_added_successfully), Toast.LENGTH_SHORT).show();
+//                }
+
+
+
             }
 
 
@@ -81,17 +89,17 @@ public class AddBookActivity extends AppCompatActivity {
         boolean valid = true;
 
         if (etBookName.getText().toString().length() == 0) {
-            Toast.makeText(this, "Enter Book Name", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.enter_book_name), Toast.LENGTH_LONG).show();
             valid = false;
         } else if (etAuthorName.getText().toString().length() == 0) {
-            Toast.makeText(this, "Enter Author Name", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.enter_author_name), Toast.LENGTH_LONG).show();
             valid = false;
         } else if (txtDate.getText().toString().length() == 0) {
 
-            Toast.makeText(this, "select Date", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.set_launching_date_of_book), Toast.LENGTH_LONG).show();
             valid = false;
         } else if (!cChild.isChecked() && !cAdult.isChecked() && !cSixtyPlus.isChecked()) {
-            Toast.makeText(this, "select age group", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.select_age_group_suitable_for_book_read), Toast.LENGTH_LONG).show();
             valid = false;
         }
 
