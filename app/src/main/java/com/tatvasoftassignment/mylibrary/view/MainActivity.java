@@ -30,9 +30,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
-import com.tatvasoftassignment.mylibrary.database.DataHelper;
 import com.tatvasoftassignment.mylibrary.R;
 import com.tatvasoftassignment.mylibrary.adapter.RecyclerViewAdapter;
+import com.tatvasoftassignment.mylibrary.database.DataHelper;
 import com.tatvasoftassignment.mylibrary.model.Books;
 
 import java.util.ArrayList;
@@ -66,8 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (getData.getCount() == 0) {
             txtMassage.setVisibility(View.VISIBLE);
 
-        }
-        else{
+        } else {
             txtMassage.setVisibility(View.INVISIBLE);
         }
         while (getData.moveToNext()) {
@@ -127,6 +126,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.launchDate:
                 adapter.sortDataByBookLaunchDate();
+                adapter.notifyDataSetChanged();
+                break;
+            case R.id.noFilter:
+                adapter.getFilter().filter("");
                 adapter.notifyDataSetChanged();
                 break;
 

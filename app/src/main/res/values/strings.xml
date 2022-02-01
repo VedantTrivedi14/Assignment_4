@@ -44,6 +44,7 @@
     <string name="No_Details_of_this_Books">No Details of this Books</string>
     <string name="Edit">Edit</string>
     <string name="Data_Updated">Data Updated</string>
+    <string name="No_filter">No Filter</string>
 
 
     <string-array name="genreArray">

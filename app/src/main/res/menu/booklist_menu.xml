@@ -46,6 +46,9 @@
                         android:title="@string/non_fiction" />
                 </menu>
             </item>
+            <item
+                android:id="@+id/noFilter"
+                android:title="@string/No_filter" />
 
         </menu>
     </item>
