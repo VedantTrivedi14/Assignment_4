@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tatvasoftassignment.mylibrary.R;
+import com.tatvasoftassignment.mylibrary.Utils.Constants;
 import com.tatvasoftassignment.mylibrary.model.Books;
 import com.tatvasoftassignment.mylibrary.view.BookDetailsActivity;
 
@@ -61,7 +62,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
 
-        @SuppressLint("NotifyDataSetChanged")
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             bookList.clear();
@@ -74,7 +74,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater recyclerInflater = LayoutInflater.from(ctx);
-        @SuppressLint("InflateParams") View recyclerView = recyclerInflater.inflate(R.layout.booklist_view_adapter, null);
+        View recyclerView = recyclerInflater.inflate(R.layout.booklist_view_adapter, null);
         return new RecyclerViewHolder(recyclerView);
     }
 
@@ -88,7 +88,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             Intent i = new Intent(ctx, BookDetailsActivity.class);
 
             int id = book_temp.getId();
-            i.putExtra("id", id);
+            i.putExtra(Constants.id, id);
             ctx.startActivity(i);
         });
     }
@@ -104,14 +104,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
 
-    @SuppressLint("NotifyDataSetChanged")
+
     public void sortDataByBookName() {
         Collections.sort(bookList, (o1, o2) -> o1.getBookNames().compareToIgnoreCase(o2.getBookNames()));
         notifyDataSetChanged();
     }
 
 
-    @SuppressLint("NotifyDataSetChanged")
+
     public void sortDataByBookLaunchDate() {
         Collections.sort(bookList, (o1, o2) -> o1.getBookLaunchDate().compareTo(o2.getBookLaunchDate()));
         notifyDataSetChanged();

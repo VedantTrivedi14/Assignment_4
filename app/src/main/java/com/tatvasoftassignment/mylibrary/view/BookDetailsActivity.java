@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.tatvasoftassignment.mylibrary.Utils.Constants;
 import com.tatvasoftassignment.mylibrary.database.DataHelper;
 import com.tatvasoftassignment.mylibrary.R;
 import com.tatvasoftassignment.mylibrary.model.Books;
@@ -35,10 +36,10 @@ public class BookDetailsActivity extends AppCompatActivity {
 
 
         Intent i = getIntent();
-        id = i.getExtras().getInt("id");
+        id = i.getExtras().getInt(Constants.id);
         Cursor cursor = db.getDataBookName(id);
         if (cursor.getCount() == 0) {
-            Toast.makeText(BookDetailsActivity.this, "No Books Right Now", Toast.LENGTH_SHORT).show();
+            Toast.makeText(BookDetailsActivity.this, getString(R.string.no_book), Toast.LENGTH_SHORT).show();
 
         }
 
@@ -65,7 +66,7 @@ public class BookDetailsActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.editDetail) {
             Intent i = new Intent(BookDetailsActivity.this, EditActivity.class);
-            i.putExtra("id", id);
+            i.putExtra(Constants.id, id);
             startActivity(i);
         }
         return true;

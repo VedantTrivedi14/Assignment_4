@@ -45,6 +45,7 @@
     <string name="Edit">Edit</string>
     <string name="Data_Updated">Data Updated</string>
     <string name="No_filter">No Filter</string>
+    <string name="no_book">No Books Right Now</string>
 
 
     <string-array name="genreArray">

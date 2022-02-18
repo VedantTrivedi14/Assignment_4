@@ -1,6 +1,5 @@
 package com.tatvasoftassignment.mylibrary.view;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,8 +17,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.tatvasoftassignment.mylibrary.database.DataHelper;
 import com.tatvasoftassignment.mylibrary.R;
+import com.tatvasoftassignment.mylibrary.Utils.Constants;
+import com.tatvasoftassignment.mylibrary.database.DataHelper;
 import com.tatvasoftassignment.mylibrary.model.Books;
 
 import java.util.Calendar;
@@ -37,7 +37,7 @@ public class EditActivity extends AppCompatActivity {
     String bookGenre, type, age = "";
     Books bookData;
 
-    @SuppressLint("SetTextI18n")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,7 @@ public class EditActivity extends AppCompatActivity {
 
         DataHelper db = new DataHelper(EditActivity.this);
         Intent i = getIntent();
-        int id = i.getExtras().getInt("id");
+        int id = i.getExtras().getInt(Constants.id);
         Cursor cursor = db.getDataBookName(id);
         if (cursor.getCount() == 0) {
             Toast.makeText(EditActivity.this, getString(R.string.No_Details_of_this_Books), Toast.LENGTH_SHORT).show();

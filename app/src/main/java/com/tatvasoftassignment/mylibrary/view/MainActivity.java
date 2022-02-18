@@ -1,5 +1,13 @@
 package com.tatvasoftassignment.mylibrary.view;
 
+import static com.tatvasoftassignment.mylibrary.R.id.bookNameSort;
+import static com.tatvasoftassignment.mylibrary.R.id.genreFilter;
+import static com.tatvasoftassignment.mylibrary.R.id.launchDate;
+import static com.tatvasoftassignment.mylibrary.R.id.miAddBook;
+import static com.tatvasoftassignment.mylibrary.R.id.noFilter;
+import static com.tatvasoftassignment.mylibrary.R.id.rFic;
+import static com.tatvasoftassignment.mylibrary.R.id.rNonFic;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.SearchManager;
@@ -111,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    @SuppressLint({"NonConstantResourceId", "NotifyDataSetChanged"})
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -120,28 +128,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         switch (item.getItemId()) {
-            case R.id.bookNameSort:
+            case bookNameSort:
                 adapter.sortDataByBookName();
                 adapter.notifyDataSetChanged();
                 break;
-            case R.id.launchDate:
+            case launchDate:
                 adapter.sortDataByBookLaunchDate();
                 adapter.notifyDataSetChanged();
                 break;
-            case R.id.noFilter:
+            case noFilter:
                 adapter.getFilter().filter("");
                 adapter.notifyDataSetChanged();
                 break;
 
-            case R.id.rFic:
+            case rFic:
                 adapter.getFilter().filter(getString(R.string.fiction));
                 adapter.notifyDataSetChanged();
                 break;
-            case R.id.rNonFic:
+            case rNonFic:
                 adapter.getFilter().filter(getString(R.string.non_fiction));
                 adapter.notifyDataSetChanged();
                 break;
-            case R.id.genreFilter:
+            case genreFilter:
                 View view = inflater.inflate(R.layout.menu_spinner, null);
                 builder.setView(view);
 
@@ -176,14 +184,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @SuppressLint("NonConstantResourceId")
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.miBookList:
 
                 Toast.makeText(getApplicationContext(), getString(R.string.You_are_already_here), Toast.LENGTH_LONG).show();
-                navigationView.setCheckedItem(R.id.miAddBook);
+                navigationView.setCheckedItem(miAddBook);
                 drawerLayout.closeDrawers();
                 break;
 
@@ -191,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 Intent intent = new Intent(MainActivity.this, AddBookActivity.class);
                 startActivity(intent);
-                navigationView.setCheckedItem(R.id.miAddBook);
+                navigationView.setCheckedItem(miAddBook);
                 drawerLayout.closeDrawers();
                 break;
         }

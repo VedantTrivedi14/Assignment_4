@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.tatvasoftassignment.mylibrary.Utils.Constants;
+
 
 public class DataHelper extends SQLiteOpenHelper {
     public static int id = 1;
@@ -28,15 +30,15 @@ public class DataHelper extends SQLiteOpenHelper {
     public void insertData(String bookName, String bookAuthorName, String genre, String bookType, String launchDate, String agePrefer) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("bookId", id);
+        contentValues.put(Constants.bookId, id);
         id = id + 1;
-        contentValues.put("bookName", bookName);
-        contentValues.put("bookAuthorName", bookAuthorName);
-        contentValues.put("genre", genre);
-        contentValues.put("bookType", bookType);
-        contentValues.put("launchDate", launchDate);
-        contentValues.put("agePrefer", agePrefer);
-         DB.insert("BookListNew", null, contentValues);
+        contentValues.put(Constants.bookName, bookName);
+        contentValues.put(Constants.bookAuthorName, bookAuthorName);
+        contentValues.put(Constants.genre, genre);
+        contentValues.put(Constants.bookType, bookType);
+        contentValues.put(Constants.launchDate, launchDate);
+        contentValues.put(Constants.agePrefer, agePrefer);
+         DB.insert(Constants.BookListNew, null, contentValues);
 
     }
 
@@ -54,13 +56,13 @@ public class DataHelper extends SQLiteOpenHelper {
     public Boolean updateData(int id, String bookName, String bookAuthorName, String genre, String bookType, String launchDate, String agePrefer) {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("bookName", bookName);
-        contentValues.put("bookAuthorName", bookAuthorName);
-        contentValues.put("genre", genre);
-        contentValues.put("bookType", bookType);
-        contentValues.put("launchDate", launchDate);
-        contentValues.put("agePrefer", agePrefer);
-        long result = DB.update("BookListNew", contentValues, "bookId=?", new String[]{String.valueOf(id)});
+        contentValues.put(Constants.bookName, bookName);
+        contentValues.put(Constants.bookAuthorName, bookAuthorName);
+        contentValues.put(Constants.genre, genre);
+        contentValues.put(Constants.bookType, bookType);
+        contentValues.put(Constants.launchDate, launchDate);
+        contentValues.put(Constants.agePrefer, agePrefer);
+        long result = DB.update(Constants.BookListNew, contentValues, "bookId=?", new String[]{String.valueOf(id)});
         return result != -1;
     }
 }
