@@ -1,6 +1,5 @@
 package com.tatvasoftassignment.mylibrary.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -113,7 +112,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     public void sortDataByBookLaunchDate() {
-        Collections.sort(bookList, (o1, o2) -> o1.getBookLaunchDate().compareTo(o2.getBookLaunchDate()));
+        Collections.sort(bookList, (o1, o2) -> o2.getBookLaunchDate().compareTo(o1.getBookLaunchDate()));
         notifyDataSetChanged();
     }
 

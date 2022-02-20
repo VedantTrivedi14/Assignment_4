@@ -33,9 +33,11 @@
             android:id="@+id/txtMassage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/recBookList"
-            android:visibility="invisible"
-            android:text="@string/no_books_right_now" />
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_margin="@dimen/margin"
+            android:text="@string/no_books_right_now"
+            android:visibility="invisible" />
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView

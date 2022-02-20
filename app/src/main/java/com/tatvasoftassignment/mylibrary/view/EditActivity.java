@@ -1,9 +1,11 @@
 package com.tatvasoftassignment.mylibrary.view;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,8 +24,12 @@ import com.tatvasoftassignment.mylibrary.Utils.Constants;
 import com.tatvasoftassignment.mylibrary.database.DataHelper;
 import com.tatvasoftassignment.mylibrary.model.Books;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class EditActivity extends AppCompatActivity {
@@ -158,17 +164,40 @@ public class EditActivity extends AppCompatActivity {
     }
 
     private void setLaunchingDate() {
-        txtDate.setOnClickListener(v -> {
-            int date, set_month, set_year;
-            GregorianCalendar gc = new GregorianCalendar();
-            date = gc.get(Calendar.DAY_OF_MONTH);
-            set_month = gc.get(Calendar.MONTH);
-            set_year = gc.get(Calendar.YEAR);
-            DatePickerDialog dpd = new DatePickerDialog(this, (datePicker, year, month, day) -> {
-                String launchDate = day + "/" + (month + 1) + "/" + year;
-                txtDate.setText(launchDate);
-            }, set_year, set_month, date);
-            dpd.show();
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date date;
+        try {
+            date = simpleDateFormat.parse(txtDate.getText().toString());
+            assert date != null;
+            Log.d("date",simpleDateFormat.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        int day1 = AddBookActivity.set_day;
+        int month1 = AddBookActivity.set_month;
+        int year1 = AddBookActivity.set_year;
+
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, year, month, day) -> {
+            calendar.set(Calendar.YEAR,year);
+            calendar.set(Calendar.MONTH,month);
+            calendar.set(Calendar.DAY_OF_MONTH,day);
+
+            String dateString = DateFormat.getDateInstance(DateFormat.SHORT, Locale.UK).format(calendar.getTime());
+            txtDate.setText(dateString);
+        };
+
+        txtDate.setOnClickListener(view -> {
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    dateSetListener,
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH));
+            datePickerDialog.updateDate(year1,month1,day1);
+            datePickerDialog.show();
         });
 
     }

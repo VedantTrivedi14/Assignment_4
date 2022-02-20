@@ -3,6 +3,7 @@ package com.tatvasoftassignment.mylibrary.view;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,11 +17,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.tatvasoftassignment.mylibrary.database.DataHelper;
 import com.tatvasoftassignment.mylibrary.R;
+import com.tatvasoftassignment.mylibrary.database.DataHelper;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class AddBookActivity extends AppCompatActivity {
 
@@ -28,7 +28,9 @@ public class AddBookActivity extends AppCompatActivity {
     private TextView txtDate;
     private Spinner mSpinner;
     private EditText etBookName, etAuthorName;
-
+    public static int set_day;
+    public static int set_month;
+    public static int set_year;
     private RadioButton rFiction;
     private CheckBox cChild, cAdult, cSixtyPlus;
     String bookGenre, type, age = "";
@@ -70,7 +72,7 @@ public class AddBookActivity extends AppCompatActivity {
                 }
 
                 db.insertData(etBookName.getText().toString(), etAuthorName.getText().toString(), bookGenre, type, txtDate.getText().toString(), age) ;
-                    Toast.makeText(getApplicationContext(), getString(R.string.Book_added_successfully), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.Book_added_successfully), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
 //                else{
@@ -141,19 +143,25 @@ public class AddBookActivity extends AppCompatActivity {
     }
 
     private void setLaunchingDate() {
+
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog.OnDateSetListener datePicker = (datePicker1, year, month, day) -> {
+            set_year = year;
+            Log.i("date", String.valueOf(set_year));
+            set_month = month;
+            Log.i("date", String.valueOf(set_month));
+            set_day = day;
+            Log.i("date", String.valueOf(set_day));
+            calendar.set(Calendar.YEAR, set_year);
+            calendar.set(Calendar.MONTH, set_month);
+            calendar.set(Calendar.DAY_OF_MONTH, set_day);
+            String launchDate = day + "/" + (month+1) + "/" + year;
+            txtDate.setText(launchDate);
+        };
         txtDate.setOnClickListener(v -> {
-            int date, set_month, set_year;
-            GregorianCalendar gc = new GregorianCalendar();
-            date = gc.get(Calendar.DAY_OF_MONTH);
-            set_month = gc.get(Calendar.MONTH);
-            set_year = gc.get(Calendar.YEAR);
-            DatePickerDialog dpd = new DatePickerDialog(this, (datePicker, year, month, day) -> {
-                String launchDate = day + "/" + (month + 1) + "/" + year;
-                txtDate.setText(launchDate);
-            }, set_year, set_month, date);
+            DatePickerDialog dpd = new DatePickerDialog(this, datePicker, calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH) );
             dpd.show();
         });
-
     }
 
 

@@ -1,14 +1,7 @@
 package com.tatvasoftassignment.mylibrary.view;
 
-import static com.tatvasoftassignment.mylibrary.R.id.bookNameSort;
-import static com.tatvasoftassignment.mylibrary.R.id.genreFilter;
-import static com.tatvasoftassignment.mylibrary.R.id.launchDate;
 import static com.tatvasoftassignment.mylibrary.R.id.miAddBook;
-import static com.tatvasoftassignment.mylibrary.R.id.noFilter;
-import static com.tatvasoftassignment.mylibrary.R.id.rFic;
-import static com.tatvasoftassignment.mylibrary.R.id.rNonFic;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Intent;
@@ -120,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -128,28 +122,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
         switch (item.getItemId()) {
-            case bookNameSort:
+            case R.id.bookNameSort:
                 adapter.sortDataByBookName();
                 adapter.notifyDataSetChanged();
                 break;
-            case launchDate:
+            case R.id.launchDate:
                 adapter.sortDataByBookLaunchDate();
                 adapter.notifyDataSetChanged();
                 break;
-            case noFilter:
+            case R.id.noFilter:
                 adapter.getFilter().filter("");
                 adapter.notifyDataSetChanged();
                 break;
 
-            case rFic:
+            case R.id.rFic:
                 adapter.getFilter().filter(getString(R.string.fiction));
                 adapter.notifyDataSetChanged();
                 break;
-            case rNonFic:
+            case R.id.rNonFic:
                 adapter.getFilter().filter(getString(R.string.non_fiction));
                 adapter.notifyDataSetChanged();
                 break;
-            case genreFilter:
+            case R.id.genreFilter:
                 View view = inflater.inflate(R.layout.menu_spinner, null);
                 builder.setView(view);
 
@@ -183,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         return true;
     }
+
 
 
     @Override
